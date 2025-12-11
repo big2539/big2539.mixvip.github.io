@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>แชร์สิทธิพิเศษแบบพรีเมียม</title>
+  <title>แชร์สิทธิพิเศษยืนยันตัวตน</title>
 
   <!-- LIFF SDK -->
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
@@ -117,7 +117,7 @@
 
     <div class="desc">
       กดแชร์ให้เพื่อนหรือกลุ่มใน LINE<br>
-      เพื่อรับสิทธิ์เข้าร่วมกิจกรรมแบบพรีเมียม
+      เพื่อยืนยันตัวตนก่อนรับสิทธิ์
     </div>
 
     <div class="preview">
@@ -143,7 +143,7 @@ const flexMessage = {
       type: "image",
       url: "https://img5.pic.in.th/file/secure-sv1/e881c03c-98c2-434f-b548-0494de3ce5fe.jpg",
       size: "full",
-      aspectRatio: "20:13",
+      aspectRatio: "1:1",
       aspectMode: "cover",
       action: {
         type: "uri",
@@ -154,17 +154,18 @@ const flexMessage = {
       type: "box",
       layout: "vertical",
       spacing: "md",
+      backgroundColor: "#0b0f1a"
       contents: [
         {
           type: "text",
-          text: "สิทธิพิเศษพรีเมียมเฉพาะคุณ",
+          text: "แจกโบนัสฟรีพิเศษ",
           weight: "bold",
           size: "xl",
           color: "#f6d375"
         },
         {
           type: "text",
-          text: "แชร์ข้อความนี้เพื่อรับสิทธิ์ใช้งานระบบและเข้าถึงลิงก์พิเศษแบบพรีเมียม",
+          text: "สมัครสมาชิกแล้วแจ้งสิทธิ์รับเครดิตฟรีได้เลย",
           wrap: true,
           color: "#bbbbbb"
         }
@@ -174,13 +175,14 @@ const flexMessage = {
       type: "box",
       layout: "vertical",
       spacing: "sm",
+      backgroundColor: "#0a1220",
       contents: [
         {
           type: "button",
           style: "primary",
           action: {
             type: "uri",
-            label: "ลิงก์เข้าระบบ",
+            label: "👉 แจ้งสิทธิ์ (LINE)",
             uri: "https://lin.ee/lUCCivU"
           },
           color: "#f6d375"
