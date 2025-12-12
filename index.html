@@ -2,8 +2,8 @@
 <html lang="th">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>แชร์เพื่อรับสิทธิ์</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🔥SHARE — รับสิทธิ์พิเศษทันที!</title>
 
 <!-- LIFF SDK -->
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
@@ -11,238 +11,162 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;500;700&display=swap');
 
-  :root{
-    --bg:#0b0b0b;
-    --card:#111111;
-    --accent-start:#f6d365;
-    --accent-end:#fda085;
-  }
   body{
     margin:0;
-    padding:40px 20px;
+    padding:0;
     min-height:100vh;
     box-sizing:border-box;
-    background:var(--bg);
-    color:#fff;
     font-family:'Prompt',sans-serif;
-    -webkit-font-smoothing:antialiased;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
     text-align:center;
+
+    /* 🔥 พื้นหลังไฟ VIP */
+    background: url('https://img5.pic.in.th/file/secure-sv1/firevipvip.jpg') center/cover no-repeat fixed,
+                radial-gradient(circle at center,#000 0%,#000 100%);
   }
 
-  h1{ margin: 0 0 8px; font-size:1.6rem; }
-  p.lead{ margin:0 0 20px; color:#cfcfcf; }
-
   .card{
-    width:100%;
-    max-width:520px;
-    margin: 0 auto;
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    border-radius:16px;
-    padding:22px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-    border: 1px solid rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.55);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:30px 25px;
+    width:92%;
+    max-width:480px;
+    border-radius:22px;
+
+    /* Glow VIP */
+    box-shadow:
+        0 0 25px rgba(255,140,0,0.4),
+        0 0 55px rgba(255,60,0,0.3),
+        inset 0 0 15px rgba(255,160,0,0.25);
+  }
+
+  h1{
+    margin:0 0 10px;
+    font-size:1.9rem;
+    font-weight:700;
+    text-shadow:0 0 10px rgba(255,170,80,0.9);
+  }
+
+  .lead{
+    margin:0 0 22px;
+    color:#f7d7b6;
+    font-size:1.1rem;
   }
 
   .share-btn{
     width:100%;
-    max-width:420px;
-    padding:14px 18px;
-    margin-top:18px;
-    border-radius:999px;
+    padding:16px 20px;
     border:none;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:1.25rem;
     font-weight:700;
-    font-size:1.15rem;
-    cursor:pointer;
-    background: linear-gradient(135deg,var(--accent-start),var(--accent-end));
-    color:#111;
-    box-shadow: 0 6px 22px rgba(250,170,90,0.25);
+    color:#2c1a00;
+
+    background: linear-gradient(135deg,#ffdf8b,#ffb347,#ff9033);
+    box-shadow:0 0 20px rgba(255,160,70,0.55),0 0 40px rgba(255,110,20,0.35);
+    transition:0.2s;
   }
 
-  .debug{
-    margin-top:18px;
-    text-align:left;
-    font-size:0.88rem;
-    color:#ddd;
-    background: #070707;
-    padding:10px;
-    border-radius:8px;
-    max-height:220px;
-    overflow:auto;
-    border:1px solid rgba(255,255,255,0.03);
+  .share-btn:hover{
+    transform:scale(1.04);
+    box-shadow:0 0 30px rgba(255,190,90,0.65);
   }
 
-  .note{ margin-top:12px; font-size:0.85rem; color:#bdbdbd; }
-
-  .small-btn {
-    margin-top:10px;
-    display:inline-block;
-    padding:8px 12px;
-    border-radius:10px;
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.06);
-    color:#fff;
-    cursor:pointer;
-    font-size:0.9rem;
+  .note{
+    color:#ffe0bd;
+    margin-top:16px;
+    font-size:0.95rem;
   }
 </style>
 </head>
+
 <body>
   <div class="card">
-    <h1>แชร์เพื่อรับสิทธิ์</h1>
-    <p class="lead">กดปุ่มด้านล่างเพื่อแชร์ไปยังเพื่อนหรือกลุ่มใน LINE</p>
+    <h1>🔥 แชร์รับสิทธิ์ทันที!</h1>
+    <div class="lead">กดแชร์ไปยังเพื่อน/กลุ่มใน LINE เพื่อรับโบนัสพิเศษ</div>
 
-    <button id="shareBtn" class="share-btn">🔄 แชร์ตอนนี้</button>
+    <button id="shareBtn" class="share-btn">✨ แชร์ตอนนี้</button>
 
-    <div class="note">หมายเหตุ: ทำตามเงื่อนไขก่อนรับเครดิตฟรีนะค่ะ</div>
-
-    <div style="display:flex;gap:8px;justify-content:center;">
-      <button id="checkBtn" class="small-btn">เช็กสถานะ LIFF</button>
-      <button id="showConsoleBtn" class="small-btn">ล้าง Debug</button>
-    </div>
-
-    <div id="debug" class="debug" aria-live="polite"></div>
+    <div class="note">* ทำครบเงื่อนไขก่อนกดรับสิทธิ์นะครับ *</div>
   </div>
 
 <script>
 (async () => {
-  const LIFF_ID = "2008637844-xtDvBoJq"; // <-- ตรวจสอบให้ตรงกับ LIFF ID ของคุณ
-  const debugEl = document.getElementById('debug');
-  const shareBtn = document.getElementById('shareBtn');
-  const checkBtn = document.getElementById('checkBtn');
-  const showConsoleBtn = document.getElementById('showConsoleBtn');
 
-  function log(...args){
-    console.log(...args);
-    const t = args.map(a => {
-      try { return typeof a === 'object' ? JSON.stringify(a,null,2) : String(a); }
-      catch(e){ return String(a); }
-    }).join(' ');
-    const line = document.createElement('div');
-    line.textContent = '[' + (new Date()).toLocaleTimeString() + '] ' + t;
-    debugEl.prepend(line);
-  }
+  const LIFF_ID = "2008637844-xtDvBoJq";
 
-  showConsoleBtn.addEventListener('click', () => { debugEl.innerHTML = ''; });
-
-  // In-page check
-  checkBtn.addEventListener('click', async () => {
-    try {
-      log('isInClient:', liff.isInClient());
-      log('isLoggedIn:', liff.isLoggedIn());
-      try {
-        const ctx = await liff.getContext();
-        log('getContext():', ctx);
-      } catch(e) {
-        log('getContext() error:', e && e.message ? e.message : e);
-      }
-      // NOTE: liff.permission.query may not be available in all envs; attempt safely
-      try {
-        if (liff.permission && liff.permission.query) {
-          const perms = await liff.permission.query();
-          log('permission.query():', perms);
-        } else {
-          log('permission.query() not available in this LIFF SDK.');
-        }
-      } catch(errPerm) {
-        log('permission.query() error:', errPerm && errPerm.message ? errPerm.message : errPerm);
-      }
-    } catch(err) {
-      log('Check error:', err && err.message ? err.message : err);
-    }
-  });
-
-  // Initialize LIFF
   try {
     await liff.init({ liffId: LIFF_ID });
-    log('liff.init OK');
-  } catch(err) {
-    log('liff.init failed:', err && err.message ? err.message : err);
+  } catch (e) {
+    alert("โหลด LIFF ไม่สำเร็จ กรุณาเปิดผ่านแอป LINE");
   }
 
-  // Share button click
-  shareBtn.addEventListener('click', async () => {
-    try {
-      log('Share button clicked');
-      if (!liff.isInClient()) {
-        alert('กรุณาเปิดลิงก์นี้ในแอป LINE เพื่อแชร์ (ต้องเป็น LINE App)');
-        log('Not in LINE client - abort share');
-        return;
-      }
+  document.getElementById("shareBtn").addEventListener("click", async () => {
 
-      // บิลด์ Flex message ให้ครบเป็น "message object"
-      const flexMessage = {
-        type: "flex",
-        altText: "โปรโมชั่นสุดพิเศษ!",
-        contents: {
-          type: "bubble",
-          hero: {
-            type: "image",
-            url: "https://img5.pic.in.th/file/secure-sv1/e881c03c-98c2-434f-b548-0494de3ce5fe.jpg",
-            size: "full",
-            aspectRatio: "1:1",
-            aspectMode: "cover"
-          },
-          body: {
-            type: "box",
-            layout: "vertical",
-            backgroundColor: "#111111", // สีพื้นหลัง body
-            contents: [
-              { type: "text", text: "โปรพิเศษ!", weight: "bold", size: "xl", color: "#ffffff" },
-              { type: "text", text: "กดลิงก์ด้านล่างเพื่อรับสิทธิ์", size: "sm", color: "#cfcfcf", margin: "md" }
-            ]
-          },
-          footer: {
-            type: "box",
-            layout: "vertical",
-            spacing: "md",
-            backgroundColor: "#111111", // สีพื้นหลัง footer
-            contents: [
-              {
-                type: "button",
-                style: "primary",
-                action: { type: "uri", label: "กดรับสิทธิ์", uri: "https://lin.ee/lUCCivU" }
-              },
-              {
-                type: "button",
-                style: "link",
-                action: { type: "uri", label: "สมัครสมาชิก", color: "#8b5dfd", uri: "https://lnwpg789.meauto.cloud/lnwpg789/betflix/register" }
-              }
-            ]
-          }
+    if (!liff.isInClient()) {
+      alert("ต้องเปิดผ่านแอป LINE เท่านั้นเพื่อแชร์");
+      return;
+    }
+
+    const flex = {
+      type: "flex",
+      altText: "โปรโมชั่นสุดพิเศษ!",
+      contents: {
+        type: "bubble",
+        hero: {
+          type: "image",
+          url: "https://img2.pic.in.th/pic/e881c03c-98c2-434f-b548-0494de3ce5fe.jpg",
+          size: "full",
+          aspectRatio: "1:1",
+          aspectMode: "cover"
+        },
+        body: {
+          type: "box",
+          layout: "vertical",
+          backgroundColor: "#0d0d0d",
+          contents: [
+            { type: "text", text: "🔥 โปรพิเศษ!", weight: "bold", size: "xl", color:"#ffdd99" },
+            { type: "text", text: "กดลิงก์ด้านล่างเพื่อรับสิทธิ์", size: "sm", color: "#bbbbbb", margin: "md" }
+          ]
+        },
+        footer: {
+          type: "box",
+          layout: "vertical",
+          spacing: "md",
+          backgroundColor:"#0d0d0d",
+          contents: [
+            {
+              type: "button",
+              style: "primary",
+              color:"#ffb94a",
+              action: { type: "uri", label: "กดรับสิทธิ์", uri: "https://lin.ee/lUCCivU" }
+            },
+            {
+              type: "button",
+              style: "link",
+              action: { type: "uri", label: "สมัครสมาชิก", uri: "https://lnwpg789.meauto.cloud/lnwpg789/betflix/register" }
+            }
+          ]
         }
-      };
-
-      // ส่งเป็น "array ของ message objects" (สำคัญ)
-      log('Calling liff.shareTargetPicker with message object...');
-      const result = await liff.shareTargetPicker([flexMessage]);
-
-      // result === true หากผู้ใช้ส่งสำเร็จ (บางเวอร์ชันเป็น undefined)
-      if (result === true || typeof result === 'object' || typeof result === 'undefined') {
-        // บาง SDK version คืน undefined เมื่อแชร์สำเร็จ — ให้ใช้ console logs เป็นหลัก
-        log('shareTargetPicker result:', result);
-        alert('ส่งสำเร็จแล้ว (ขอบคุณที่ร่วมกิจกรรมค่ะ)');
-      } else {
-        log('shareTargetPicker canceled or failed:', result);
-        alert('ผู้ใช้ยกเลิกการแชร์หรือเกิดข้อผิดพลาด');
       }
+    };
 
+    try {
+      const res = await liff.shareTargetPicker([flex]);
+      if (res) alert("แชร์สำเร็จ! ขอบคุณครับ");
     } catch (err) {
-      log('share error:', err && err.message ? err.message : err);
-      alert('เกิดข้อผิดพลาดขณะแชร์ — ดู debug log ด้านล่างเพื่อตรวจสอบ');
+      alert("แชร์ไม่สำเร็จ โปรดลองอีกครั้ง");
     }
-  });
 
-  // Initial quick logs
-  try {
-    log('isInClient (initial):', liff.isInClient());
-    if (liff.isInClient()) {
-      try { log('context:', await liff.getContext()); } catch(e){ log('getContext error:', e); }
-    }
-  } catch(e){
-    log('Initial status error:', e);
-  }
+  });
 
 })();
 </script>
+
 </body>
 </html>
