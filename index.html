@@ -3,123 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แชร์เพื่อรับสิทธิ์</title>
+<title>กดแชร์เพื่อรับสิทธิ์</title>
 
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap');
-
     body {
         margin: 0;
         padding: 0;
-        font-family: 'Prompt', sans-serif;
-        background: #0a0a0a;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
+        background: #0b0b0b;
         color: white;
-    }
-
-    .hero-img {
-        width: 100%;
-        max-width: 560px;
-        border-radius: 18px;
-        box-shadow: 0 0 30px rgba(255,255,255,0.15);
-        margin-bottom: 25px;
-    }
-
-    h2 {
-        font-size: 1.45rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-
-    p {
-        font-size: 1rem;
-        opacity: 0.85;
-        margin-bottom: 25px;
+        font-family: 'Prompt', sans-serif;
+        text-align: center;
+        padding: 40px 20px;
     }
 
     .share-btn {
         width: 90%;
         max-width: 420px;
         padding: 16px 0;
+        margin-top: 40px;
         background: linear-gradient(135deg, #f6d365, #fda085);
         border-radius: 50px;
-        color: #000;
-        font-size: 1.25rem;
-        font-weight: 600;
+        color: black;
         border: none;
+        font-size: 1.35rem;
+        font-weight: 600;
         cursor: pointer;
         box-shadow: 0 5px 18px rgba(255, 200, 120, 0.35);
-        transition: 0.25s;
-    }
-
-    .share-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 25px rgba(255, 200, 120, 0.55);
     }
 </style>
 </head>
-
 <body>
 
-<img class="hero-img"
-     src="https://img5.pic.in.th/file/secure-sv1/e881c03c-98c2-434f-b548-0494de3ce5fe.jpg">
-
 <h2>แชร์เพื่อรับสิทธิ์ของคุณ</h2>
-<p>กดแชร์ไปยังเพื่อนหรือกลุ่ม LINE เพื่อรับสิทธิ์พิเศษทันที</p>
+<p>กดปุ่มด้านล่างเพื่อแชร์ไปยังเพื่อนหรือกลุ่ม LINE</p>
 
 <button class="share-btn" onclick="shareFlex()">🔄 แชร์ตอนนี้</button>
 
 <script>
 async function shareFlex() {
+
     await liff.init({ liffId: "2008637844-xtDvBoJq" });
 
+    // ตรวจว่าเปิดใน LINE App หรือไม่
+    if (!liff.isInClient()) {
+        alert("กรุณาเปิดลิงก์นี้ใน LINE เพื่อแชร์");
+        return;
+    }
+
     const flex = {
-      type: "flex",
-      altText: "โปรโมชั่นพิเศษ!",
-      contents: {
-        type: "bubble",
-        hero: {
-          type: "image",
-          url: "https://img5.pic.in.th/file/secure-sv1/e881c03c-98c2-434f-b548-0494de3ce5fe.jpg",
-          size: "full",
-          aspectRatio: "1:1",
-          aspectMode: "cover"
-        },
-        body: {
-          type: "box",
-          layout: "vertical",
-          contents: [
-            { type: "text", text: "โปรพิเศษ!", weight: "bold", size: "xl" },
-            { type: "text", text: "กดลิงก์ด้านล่างเพื่อรับสิทธิ์", size: "sm", color: "#888", margin: "md" }
-          ]
-        },
-        footer: {
-          type: "box",
-          layout: "vertical",
-          spacing: "md",
-          contents: [
-            {
-              type: "button",
-              style: "primary",
-              action: { type: "uri", label: "กดรับสิทธิ์", uri: "https://lin.ee/lUCCivU" }
+        type: "flex",
+        altText: "โปรโมชั่นสุดพิเศษ!",
+        contents: {
+            type: "bubble",
+            hero: {
+                type: "image",
+                url: "https://img5.pic.in.th/file/secure-sv1/e881c03c-98c2-434f-b548-0494de3ce5fe.jpg",
+                size: "full",
+                aspectRatio: "1:1",
+                aspectMode: "cover"
             },
-            {
-              type: "button",
-              style: "link",
-              action: { type: "uri", label: "สมัครสมาชิก", uri: "https://lnwpg789.meauto.cloud/lnwpg789/betflix/register" }
+            body: {
+                type: "box",
+                layout: "vertical",
+                contents: [
+                    { type: "text", text: "โปรพิเศษ!", weight: "bold", size: "xl" },
+                    { type: "text", text: "กดลิงก์ด้านล่างเพื่อรับสิทธิ์", size: "sm", color: "#777", margin: "md" }
+                ]
+            },
+            footer: {
+                type: "box",
+                layout: "vertical",
+                spacing: "md",
+                contents: [
+                    {
+                        type: "button",
+                        style: "primary",
+                        action: { type: "uri", label: "กดรับสิทธิ์", uri: "https://lin.ee/lUCCivU" }
+                    },
+                    {
+                        type: "button",
+                        style: "link",
+                        action: { type: "uri", label: "สมัครสมาชิก", uri: "https://lnwpg789.meauto.cloud/lnwpg789/betflix/register" }
+                    }
+                ]
             }
-          ]
         }
-      }
     };
 
-    liff.shareTargetPicker([flex]);
+    const result = await liff.shareTargetPicker([flex]);
+
+    if (result) {
+        alert("ส่งสำเร็จแล้ว!");
+    } else {
+        alert("ผู้ใช้ยกเลิกการแชร์");
+    }
 }
 </script>
 
