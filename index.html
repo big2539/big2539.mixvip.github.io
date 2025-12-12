@@ -46,13 +46,12 @@ async function shareFlex() {
 
     await liff.init({ liffId: "2008637844-xtDvBoJq" });
 
-    // ตรวจว่าเปิดใน LINE App หรือไม่
     if (!liff.isInClient()) {
         alert("กรุณาเปิดลิงก์นี้ใน LINE เพื่อแชร์");
         return;
     }
 
-    const flex = {
+    const flexMsg = {
         type: "flex",
         altText: "โปรโมชั่นสุดพิเศษ!",
         contents: {
@@ -92,7 +91,7 @@ async function shareFlex() {
         }
     };
 
-    const result = await liff.shareTargetPicker([flex]);
+    const result = await liff.shareTargetPicker([flexMsg]);
 
     if (result) {
         alert("ส่งสำเร็จแล้ว!");
